@@ -1,0 +1,42 @@
+
+name: Spell-check and build the presentation
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*.*.*"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  spellcheck:
+    name: Spellcheck the presentation
+    runs-on: ubuntu-24.04
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v3
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - name: Check Nixpkgs inputs
+        uses: DeterminateSystems/flake-checker-action@main
+        with:
+          fail-mode: true
+      - name: Run codespell
+        run: |
+          nix run .#spell-check
+  build:
+    name: Build the presentation
+    needs: spellcheck
+    runs-on: ubuntu-24.04
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v3
+      - name: Build the presentation
+        uses: lvignoli/typist-action@main
+        with:
+          source_file: main.typ
+      
+      
