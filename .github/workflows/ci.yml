@@ -35,7 +35,7 @@ jobs:
       - name: git checkout
         uses: actions/checkout@v3
       - name: Build the presentation
-        uses: lvignoli/typist-action@main
+        uses: lvignoli/typst-action@main
         with:
           source_file: main.typ
       
