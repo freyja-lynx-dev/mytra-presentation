@@ -1,0 +1,4 @@
+*.pdf
+target
+.direnv
+.envrc
