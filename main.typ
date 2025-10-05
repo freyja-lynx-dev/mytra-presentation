@@ -43,7 +43,7 @@
     - Integrating simulation software into build workflow, CI/CD
   - Intel (06/2025 -> Now)
     - De jure: Validation Technician
-      - Flash firmware, remove/instert cables
+      - Flash firmware, remove/insert cables
     - De facto: Wildcat DevOps Engineer
       - Automation with Ansible/Semaphore, Bash
       - Managing local Git forge with Forgejo
