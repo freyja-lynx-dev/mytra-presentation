@@ -4,14 +4,15 @@
 #set align(horizon)
 
 #show: slides.with(
-  title: "Placewcholder",
-  subtitle: "A candidate of all time",
+  title: "Sasha Zurek",
+  subtitle: none,
   date: "10.06.2025",
   authors: ("Sasha Zurek"),
   theme: "full",
   bg-color: rgb("#faf4ed"),
   title-color: rgb("#907aa9"),
-  layout: "medium"
+  layout: "medium",
+  count: "number"
 )
 
 = Introduction
@@ -20,35 +21,43 @@
 - Chicago suburbs native
 - Northern Michigan University, B.S. in Computer Science
   - Senior Project
-    - Wildcat Instruction Set
+    - #link("https://gitlab.com/sashazurek/cs480")[Wildcat Instruction Set]
       - 24-bit MISC CPU instruction set
-    - Wildcat Conceptual Architectural Template (WildCAT)
+    - #link("https://github.com/freyja-lynx-dev/wildcat")[Wildcat Conceptual Architectural Template (WildCAT)]
       - Reference implementation of the Wildcat ISA
       - Built with Chisel + Scala
- 
-
-== Professional Experience
-- \~3 years of experience
 - Internships and co-ops
   - General Motors (06/2020 -> 08/2020)
     - iOS App Development
   - Kioxia America (08/2020 -> 08/2021)
     - SSD performance analysis tooling
+ 
+
+== Professional Experience
 - Post-college
   - SiFive (06/2022 -> 10/2023)
     - Platform Engineer
     - Developer tooling
+      - #link("https://github.com/sifive/wake")[Wake (ML clone for build orchestration)]
+      - Python
     - Integrating simulation software into build workflow, CI/CD
   - Intel (06/2025 -> Now)
     - De jure: Validation Technician
+      - Flash firmware, remove/instert cables
     - De facto: Wildcat DevOps Engineer
+      - Automation with Ansible/Semaphore, Bash
+      - Managing local Git forge with Forgejo
+      - Digital archaeology :>
 
 
 == What else do I do?
 - Photography
+- CRT repair
 - Fighting games (Melee, Rivals of Aether 2)
 - Drive-by OSS contributions
   - SSBM Decompilation
+  - Pixelfed
+  - Ansible
 - ATproto ecosystem
   - BART Alerts Bot
   - Bluesky Notifications for GNOME
@@ -69,6 +78,7 @@ How did we do this?
   - 50% reads, 50% writes
   - ...
   - 0% reads, 100% writes
+- Excel spreadsheets with raw data, graphs, and statistical calculations
 
 == What I started with
 The previous intern had:
@@ -87,9 +97,12 @@ I created `performance-analyzer`
   - some Python packaging tool
 
 It took a few weeks to get it finished, but it worked...
-
-== Cue
-Show the example...
+#pagebreak()
+#image("media/kioxia3.svg")
+#pagebreak()
+#image("media/kioxia4.svg")
+#pagebreak()
+#image("media/kioxia5.svg")
 
 == The Problem
 ... until we had to add a new format of performance test.
@@ -106,8 +119,11 @@ of the problem set, I was able to:
   - arranged in a more functional, unidirectional data flow
 - Distribute it as a native Python module
 
-== Cue 2
-Show the others
+#pagebreak()
+#image("media/kioxia7.svg")
+#pagebreak()
+#image("media/kioxia8.svg")
+
 
 == Why was this important?
 I got to:
