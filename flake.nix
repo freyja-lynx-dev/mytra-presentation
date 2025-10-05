@@ -33,7 +33,13 @@
 
         typixLib = typix.lib.${system};
 
-        src = typixLib.cleanTypstSource ./.;
+        # this was originally using the typix cleanTypstSource function
+        # but that filters out image files
+        # would be best to do some kind of cleaning,
+        # but uh, later problem. maybe could contribute
+        # an extension to cleanTypstSource with optional extra paths
+        # for the user to explicitly declare
+        src = ./.;
         commonArgs = {
           typstSource = "main.typ";
 
@@ -50,7 +56,7 @@
             # }
             # {
             #   dest = "media";
-            #   src = "./media";
+            #   src = "${}media";
             # }
           ];
         };
