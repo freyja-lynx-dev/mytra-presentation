@@ -88,6 +88,9 @@ I created `performance-analyzer`
 
 It took a few weeks to get it finished, but it worked...
 
+== Cue
+Show the example...
+
 == The Problem
 ... until we had to add a new format of performance test.
 - The internal structure was not conducive to extension
@@ -103,7 +106,10 @@ of the problem set, I was able to:
   - arranged in a more functional, unidirectional data flow
 - Distribute it as a native Python module
 
-== Why was this important to me?
+== Cue 2
+Show the others
+
+== Why was this important?
 I got to:
 - Create something that I was proud of
 - Realize my beautiful creation was flawed
@@ -111,7 +117,7 @@ I got to:
 - Practice the lessons I learned in university in a real-world context
 
 
-== What would I do with what I know now?
+== What would I do now?
 - Turn the CLI program into an HTTP agent that:
   - can trigger runs with options
   - replaces Excel with custom graphs and a database interface
@@ -121,7 +127,9 @@ I got to:
 = Afterword
 
 == Questions?
+#link("https://github.com/freyja-lynx-dev/mytra-presentation")[
 This presentation was built with:
+]
 - Typst + diatypst
 - Nix
 - Github Actions
