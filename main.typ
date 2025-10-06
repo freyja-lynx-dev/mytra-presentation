@@ -101,7 +101,7 @@ The team had:
 
 It was a painful, long, mostly-manual, error prone process that would take *24 hours* for turnaround:
 - Kick off the test at 5PM Monday
-- Get results by 9AM Tuesday
+- Get results by 9AM Wednesday
 
 == The first attempt
 I created `performance-analyzer`
