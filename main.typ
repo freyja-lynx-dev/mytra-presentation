@@ -5,9 +5,9 @@
 
 #show: slides.with(
   title: "Sasha Zurek",
-  subtitle: none,
+  subtitle: "Technical Presentation",
   date: "10.06.2025",
-  authors: ("Sasha Zurek"),
+  authors: (""),
   theme: "full",
   bg-color: rgb("#faf4ed"),
   title-color: rgb("#907aa9"),
@@ -26,49 +26,63 @@
     - #link("https://github.com/freyja-lynx-dev/wildcat")[Wildcat Conceptual Architectural Template (WildCAT)]
       - Reference implementation of the Wildcat ISA
       - Built with Chisel + Scala
-- Internships and co-ops
-  - General Motors (06/2020 -> 08/2020)
+- During University
+  - General Motors
     - iOS App Development
-  - Kioxia America (08/2020 -> 08/2021)
+  - Kioxia America
     - SSD performance analysis tooling
  
 
 == Professional Experience
-- Post-college
-  - SiFive (06/2022 -> 10/2023)
-    - Platform Engineer
-    - Developer tooling
+- After University
+  - SiFive
+    - Platform Engineer, developer tooling
       - #link("https://github.com/sifive/wake")[Wake (ML clone for build orchestration)]
       - Python
     - Integrating simulation software into build workflow, CI/CD
-  - Intel (06/2025 -> Now)
+  - Intel Corporation (Now)
     - De jure: Validation Technician
       - Flash firmware, remove/insert cables
     - De facto: Wildcat DevOps Engineer
       - Automation with Ansible/Semaphore, Bash
-      - Managing local Git forge with Forgejo
+      - Self hosted services like Forgejo, Zabbix
       - Digital archaeology :>
 
 
 == What else do I do?
-- Photography
-- CRT repair
-- Fighting games (Melee, Rivals of Aether 2)
-- Drive-by OSS contributions
-  - SSBM Decompilation
-  - Pixelfed
-  - Ansible
-- ATproto ecosystem
-  - BART Alerts Bot
-  - Bluesky Notifications for GNOME
-  - geocache.world
+#grid(
+  columns: (2),
+  align: horizon,
+  column-gutter: 16,
+  list(
+    [Photography],
+    [CRT repair],
+    [Fighting games (Melee, Rivals of Aether 2)],
+    [Drive-by OSS contributions,
+      #list(
+      [SSBM Decompilation],
+      [Pixelfed],
+      [Ansible]
+    )],
+    [ATproto ecosystem,
+      #list(
+        link("https://github.com/freyja-lynx-dev/bluesky-rss-bot")[BART Alerts Bot],
+        link("https://github.com/freyja-lynx-dev/bsky-notifs-for-gnome")[Bluesky Notifications for GNOME],
+        link("https://github.com/freyja-lynx-dev/branches")[Branches],
+        link("https://tangled.org/@freyja-lynx.dev/geocache-world")[geocache.world]
+      )]
+  ),
+  align(right)[#image("media/crt.jpg", width: 92%)]
+)
+
 
 = Technical Achievement
 
 == The Problem
-My team at Kioxia was responsible for:
-- Tracking firmware progress, in terms of performance
-- Help assembling competitive analysis
+My primary focus when I worked at Kioxia:
+- Performance testing and analysis of solid state drives
+- Tested Kioxia's SSDs to identify performance bottlenecks and firmware issues
+- Tested competitor SSDs to keep tabs on the competition
 
 How did we do this?
 - `fio`, a tool that simulates I/O operations
@@ -81,22 +95,22 @@ How did we do this?
 - Excel spreadsheets with raw data, graphs, and statistical calculations
 
 == What I started with
-The previous intern had:
-- A handful of Excel macros that only did part of the work
-- Some shell scripts that didn't do much
+The team had:
+- A shell script for running `fio` with our standard workload
+- Some Excel macros that assisted with data import and layout
 
-This meant performance tests would take about *24 hours* for turnaround!
-- Test itself ran overnight
-- Intern would hand assemble the Excel spreadsheet after importing run data
+It was a painful, long, mostly-manual, error prone process that would take *24 hours* for turnaround:
+- Kick off the test at 5PM Monday
+- Get results by 9AM Tuesday
 
 == The first attempt
 I created `performance-analyzer`
 - Python
   - xlsxwriter
-  - pandas
-  - some Python packaging tool
+  - Pandas
+  - Pyinstaller for distribution
+- Ran the standard workload with no configurable options
 
-It took a few weeks to get it finished, but it worked...
 #pagebreak()
 #image("media/kioxia3.svg")
 #pagebreak()
@@ -105,25 +119,32 @@ It took a few weeks to get it finished, but it worked...
 #image("media/kioxia5.svg")
 
 == The Problem
-... until we had to add a new format of performance test.
-- The internal structure was not conducive to extension
-- The distribution tool I used was not great
-- 
+When I tried extending `performance-analyzer` to support another workload:
+- Internal structure was overly tied to the main workload
+- Code was hard to parse and understand
+- Debugging was very difficult
+  - Pyinstaller made debugging runtime errors difficult
+  - There was no mechanism for dry-runs, so no local testing
+
+It worked, but it was clearly flawed, so I went back to the drawing board.
 
 == The second, refined attempt
-While working on other duties, I started a rewrite: `nvme-cat`. With a better understanding
-of the problem set, I was able to:
-- Create an object hierarchy that was:
-  - conducive to reusable code
-  - easily extended to support new workloads and devices
-  - arranged in a more functional, unidirectional data flow
-- Distribute it as a native Python module
+With the new understanding I had, I created `io-cat`:
+- A well defined object structure
+  - Target device was abstracted into an object
+    - Supported NVMe, SATA, RAM disks, `/dev/null` for local testing
+  - Workloads were abstracted, with a focus on composable and reusable functions
+- Functional flow of data
+  - Give `io-cat` a set of options
+  - Option set gets passed to the test runner
+  - Test runner passes results to the charter
+  - Charter returns an Excel spreadsheet
+- Native Python module instead of Pyinstaller
 
 #pagebreak()
 #image("media/kioxia7.svg")
 #pagebreak()
 #image("media/kioxia8.svg")
-
 
 == Why was this important?
 I got to:
