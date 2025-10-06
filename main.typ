@@ -41,8 +41,8 @@
       - Python
     - Integrating simulation software into build workflow, CI/CD
   - Intel Corporation (Now)
-    - De jure: Validation Technician
-      - Flash firmware, remove/insert cables
+    - De jure: Firmware Validation Technician
+      - Flash firmware, remove/insert cables, assist debug efforts
     - De facto: Wildcat DevOps Engineer
       - Automation with Ansible/Semaphore, Bash
       - Self hosted services like Forgejo, Zabbix
@@ -55,7 +55,7 @@
   align: horizon,
   column-gutter: 16,
   list(
-    [Photography],
+    [#link("https://grain.social/profile/freyja-lynx.dev")[Photography]],
     [CRT repair],
     [Fighting games (Melee, Rivals of Aether 2)],
     [Drive-by OSS contributions,
@@ -72,7 +72,16 @@
         link("https://tangled.org/@freyja-lynx.dev/geocache-world")[geocache.world]
       )]
   ),
-  align(right)[#image("media/crt.jpg", width: 92%)]
+  align(right)[
+    #grid(
+      columns: (1),
+      rows: (2),
+      row-gutter: 1fr,
+      align: horizon,
+       image("media/photo.jpg", width: 92%),
+       image("media/crt.jpg", width: 92%),
+    )
+  ]
 )
 
 
